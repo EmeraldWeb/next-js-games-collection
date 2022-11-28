@@ -1,16 +1,17 @@
 import Head from 'next/head';
 
-export default function Reviews(): React.ReactNode {
+import { Layout } from '../../components/layout';
+
+export default function Reviews(): React.ReactElement {
     return (
         <>
             <Head>
                 <title>Reviews</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
+            <Layout>
                 Reviews
-            </main>
+            </Layout>
         </>
     )
 }
