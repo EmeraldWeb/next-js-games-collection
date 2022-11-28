@@ -1,14 +1,27 @@
 import Head from 'next/head';
 
-export default function Home(): React.ReactNode {
+import { Layout } from '../components/layout';
+import { Logo } from '../components/logo';
+import styles from '../styles/Home.module.scss';
+
+import { gitHub } from '../const/urls'
+
+export default function Home(): React.ReactElement {
     return (
         <>
             <Head>
                 <title>Home</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>Hello world</main>
+            <Layout>
+                <a
+                    className={styles.logoLink}
+                    href={gitHub}
+                    target={'__blank'}
+                >
+                    <Logo />
+                </a>
+            </Layout>
         </>
     );
 }
