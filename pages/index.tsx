@@ -1,16 +1,14 @@
 import Head from 'next/head';
 
-export default function Reviews() {
+export default function Home(): React.ReactNode {
     return (
         <>
             <Head>
-                <title>Reviews</title>
+                <title>Home</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                Reviews
-            </main>
+            <main>Hello world</main>
         </>
-    )
+    );
 }
