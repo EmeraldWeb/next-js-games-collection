@@ -1,4 +1,8 @@
 .logo {
     border: 1px solid #008000; // TODO: organise this color
     border-radius: 50%;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

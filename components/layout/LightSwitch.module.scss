@@ -1,0 +1,16 @@
+@use '/styles/variables/common';
+
+.switcher {
+    display: flex;
+    align-items: center;
+
+    .toggle {
+        margin-right: common.$gap;
+    }
+}
+
+.icon {
+    $size: 24px;
+    height: $size;
+    width: $size;
+}

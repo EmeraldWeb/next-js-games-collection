@@ -1,2 +1,9 @@
-//background-color: #FAFAFA;
-//border: 1px solid #008000;
+:root { // TODO: find solution with JSON
+    --main-color: #fafafa;
+    --sub-color: #008000;
+    --sub-color-light: #00b400;
+    --text-color: #000;
+    --text-bold-color: #068b06;
+    --outsource-link-visited: #f75550;
+    //--text-hover-color: #10c910;
+}

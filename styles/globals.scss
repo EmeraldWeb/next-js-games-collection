@@ -1,5 +1,26 @@
 @use './reset';
+@use './variables/color-theme'; // :root global vars must be imported only here
+@use './variables/common';
 
 body {
-    background-color: #FAFAFA; // TODO: organise this color
+    background-color: var(--main-color);
+    color: var(--text-color);
+    transition: background-color common.$trans-time;
+}
+
+b, strong {
+    color: var(--text-bold-color);
+}
+
+a[target=__blank] {
+    color: var(--text-bold-color);
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:visited {
+        color: var(--outsource-link-visited);
+    }
 }
