@@ -1,0 +1,18 @@
+{
+    "light": {
+        "--main-color": "#fafafa",
+        "--sub-color": "#008000",
+        "--sub-color-light": "#00b400",
+        "--text-color": "#000",
+        "--text-bold-color": "#068b06",
+        "--outsource-link-visited": "#f75550"
+    },
+    "dark": {
+        "--main-color": "#2f2f2f",
+        "--sub-color": "#008000",
+        "--sub-color-light": "#00b400",
+        "--text-color": "#fff",
+        "--text-bold-color": "#068b06",
+        "--outsource-link-visited": "#f75550"
+    }
+}

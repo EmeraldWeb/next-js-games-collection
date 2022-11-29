@@ -1,1 +1,9 @@
 @use 'reset-css/sass/_reset.scss';
+
+a,
+a:focus,
+a:hover,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}

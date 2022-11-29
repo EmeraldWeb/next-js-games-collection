@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Header } from './Header';
 import styles from './Layout.module.scss';
 
 type Props = {
@@ -13,6 +14,7 @@ export function Layout({ children }: Props): React.ReactElement {
             </Head>
 
             <div className={styles.layout}>
+                <Header />
                 <main className={styles.content}>
                     {children}
                 </main>
