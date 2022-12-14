@@ -1,0 +1,56 @@
+@use './variables/_common.scss';
+@use './variables/_device-size.scss';
+@use '../components/layout/Header.module';
+
+.layout {
+    $paddingTop: #{common.$gap-big + Header.$header-size};
+    box-sizing: border-box;
+    padding: $paddingTop common.$gap common.$gap-big;
+}
+
+.linkInTopic {
+    color: var(--text-bold-color);
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:visited {
+        color: var(--outsource-link-visited);
+    }
+}
+
+.container { // TODO: !copypaste! separate into standalone tile component
+    margin-bottom: common.$gap-for-block;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: common.$gap;
+}
+
+.section {
+    margin-bottom: common.$gap-big;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: device-size.$device-width-tablet) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section {
+        margin-right: common.$gap-big;
+        margin-bottom: 0;
+        width: calc(50% - #{common.$gap-big / 2});
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@use '/styles/variables/_common';
+@use '/styles/variables/_device-size';
+
+.container { // TODO: !copypaste! separate into standalone tile component
+    margin-bottom: common.$gap-for-block;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: common.$gap;
+}
+
+.section {
+    margin-bottom: common.$gap-big;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: device-size.$device-width-tablet) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section {
+        margin-right: common.$gap-big;
+        margin-bottom: 0;
+        width: calc(50% - #{common.$gap-big / 2});
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

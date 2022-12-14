@@ -1,8 +1,7 @@
-.logoLink {
-    width: 100%;
+@use './variables/_common.scss';
 
-    img {
-        display: block;
-        margin: 0 auto;
-    }
+.logoLink {
+    margin-bottom: common.$gap-for-block;
+    display: flex;
+    justify-content: center;
 }

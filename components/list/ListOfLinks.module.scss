@@ -1,0 +1,32 @@
+@use '/styles/variables/_device-size';
+@use '/styles/variables/_common';
+
+.link {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: common.$gap;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+        color: var(--sub-color);
+        border-color: var(--sub-color);
+    }
+}
+
+.item {
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+@media (min-width: device-size.$device-width-tablet) {
+    .item {
+        max-width: 50%;
+    }
+}
