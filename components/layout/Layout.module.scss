@@ -16,8 +16,8 @@
 
 .content {
     box-sizing: border-box;
-    min-height: 100vh;
+    min-height: calc(100vh - #{Header.$header-size});
     max-width: device-size.$device-width-tablet;
     width: 100%;
-    padding: common.$gap;
+    padding: common.$gap-big common.$gap;
 }

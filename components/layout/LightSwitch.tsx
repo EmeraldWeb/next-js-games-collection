@@ -32,7 +32,7 @@ export function LightSwitch(): React.ReactElement {
             />
             <img
                 className={styles.icon}
-                src={`icons/${icon}.svg`}
+                src={`/icons/${icon}.svg`}
                 alt={icon}
             />
         </div>

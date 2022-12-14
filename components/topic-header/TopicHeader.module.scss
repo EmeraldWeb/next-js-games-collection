@@ -1,0 +1,7 @@
+@use '/styles/variables/_common';
+
+.header {
+    margin-bottom: common.$gap-for-block;
+    font-size: 40px; // TODO: systematize
+    font-weight: 700;
+}

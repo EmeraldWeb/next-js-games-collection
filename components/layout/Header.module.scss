@@ -8,6 +8,7 @@ $header-size: 48px;
     z-index: 1;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     padding: #{common.$gap / 2};
     height: $header-size;
