@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable */
 import { useState } from "react";
 
 export default function App() {

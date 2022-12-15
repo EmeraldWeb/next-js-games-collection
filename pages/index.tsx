@@ -26,6 +26,7 @@ export default function Home(): React.ReactElement {
                     <a
                         href={gitHub}
                         target={'__blank'}
+                        rel={'noreferrer'}
                     >
                         <Logo />
                     </a>
