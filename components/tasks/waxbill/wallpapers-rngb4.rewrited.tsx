@@ -1,11 +1,17 @@
-// @ts-nocheck
-import React, { useEffect, useState } from "react";
+// must be used internationalization
+import React, { useEffect, useState } from 'react';
 
-const callApi = (url) => {
-    console.log("Called url:", url);
+const callApi = (url: string): void => {
+    console.log('Called url:', url);
 };
 
-const getColorsDict = () => {
+type Colors = {
+    colors?: {
+        [color: string]: number,
+    }
+}
+
+const getColorsDict = (): Promise<Colors> => {
     return new Promise((res) => {
         setTimeout(() => {
             res({
@@ -18,33 +24,51 @@ const getColorsDict = () => {
     });
 };
 
-export default function App() {
-    const [dict, setDict] = useState([]);
+// used as default export because code highlighting issues, must be simple export
+export default function App(): React.ReactElement {
+    const [dict, setDict] = useState<Colors>({});
+    const [isReady, setReady] = useState(false);
 
     const filterByColor = (colorName) => {
-        const apiUrl = `/api/?colorId=${dict.colors[colorName]}`;
-        callApi(apiUrl);
+        if (dict.colors) {
+            const apiUrl = `/api/?colorId=${dict.colors[colorName]}`;
+            callApi(apiUrl);
+        }
     };
 
-    useEffect(async () => {
+    async function getDict() {
+        // bugfix: destroy is not a function
+        // https://medium.com/geekculture/react-uncaught-typeerror-destroy-is-not-a-function-192738a6e79b
         setDict(await getColorsDict());
-        filterByColor("red");
-    });
+        setReady(true);
+
+        if (isReady) {
+            filterByColor('red');
+        }
+    }
+
+    useEffect( () => {
+        getDict();
+    }, [isReady]);
 
     return (
-        <div className="App">
-            <ul>
+        <div className='App'>
+            <p>
                 Есть магазин обоев. Пользователь перешел по ссылке oboi.com/?color=red
-            </ul>
-            <ul>
+            </p>
+            <p>
                 Когда страница загрузилась, нам надо сходить в API и получить обои
                 красного цвета, но для этого надо знать id этого цвета.
-            </ul>
-            <ul>Чтобы его получить, надо сначала сходить в API за словарем</ul>
-            <ul>На странице нет использования реальных API, всё фейковое.</ul>
-            <ul>
-                Нужно починить код, чтобы в консоли отобразилось "/api/?colorId=1"
-            </ul>
+            </p>
+            <p>
+                Чтобы его получить, надо сначала сходить в API за словарем
+            </p>
+            <p>
+                На странице нет использования реальных API, всё фейковое.
+            </p>
+            <p>
+                Нужно починить код, чтобы в консоли отобразилось '/api/?colorId=1'
+            </p>
         </div>
     );
 }
