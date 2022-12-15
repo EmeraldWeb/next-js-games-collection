@@ -23,6 +23,7 @@ export function ListOfLinks({ list }: Props): React.ReactElement {
                     className={styles.link}
                     href={link.href}
                     target={'_blank'}
+                    rel={'noreferrer'}
                 >
                     {content}
                 </a>

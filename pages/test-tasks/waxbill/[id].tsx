@@ -63,6 +63,7 @@ export default function Task(props: Props): React.ReactElement {
                     className={styles.linkInTopic}
                     href={codeSandboxUrl}
                     target={'_blank'}
+                    rel={'noreferrer'}
                     title={codeSandboxUrl}
                 >
                     {`Codesandbox.io`}
