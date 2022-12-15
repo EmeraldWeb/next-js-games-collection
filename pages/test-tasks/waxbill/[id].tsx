@@ -5,18 +5,20 @@ import React, { Suspense } from 'react';
 import { Header } from '../../../components/layout/Header';
 import { TopicHeader } from '../../../components/topic-header';
 import { CodeMirror } from '../../../components/code';
-import { getAllTasksIds, getFileContent } from '../../../lib/waxbill';
+import { getAllTasksIds, getFileContent, getTasksDescriptions } from '../../../lib/waxbill';
 import styles from '../../../styles/WaxbillTask.module.scss';
 
 export async function getStaticProps({ params }) {
     const originalCode = getFileContent(`${params.id}.tsx`);
     const rewritedCode = getFileContent(`${params.id}.rewrited.tsx`);
+    const allDescriptions = getTasksDescriptions();
 
     return {
         props: {
             id: params.id,
             originalCode,
             rewritedCode,
+            description: allDescriptions[params.id],
         },
     };
 }
@@ -34,10 +36,11 @@ type Props = {
     id: string,
     originalCode: string,
     rewritedCode: string,
+    description?: string,
 }
 
 export default function Task(props: Props): React.ReactElement {
-    const { id, originalCode, rewritedCode } = props;
+    const { id, originalCode, rewritedCode, description } = props;
 
     const Dynamic = dynamic(
         () => import(`../../../components/tasks/waxbill/${id}.rewrited.tsx`),
@@ -69,8 +72,10 @@ export default function Task(props: Props): React.ReactElement {
             <div className={styles.container}>
                 <section className={styles.section}>
                     <h2 className={styles.title}>Description</h2>
-                    <p>
-                        {codeSandboxUrl}
+                    <p className={styles.description}>
+                        {id}
+                        <br />
+                        {description}
                     </p>
                 </section>
 

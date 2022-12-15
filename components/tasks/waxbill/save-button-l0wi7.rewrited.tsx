@@ -1,31 +1,54 @@
-import { useState } from 'react';
+// must be used internationalization
+import React, { useState, useRef, ForwardedRef } from 'react';
 import styles from '../../../styles/save-button-l0wi7.module.scss';
 
-export default function App() {
-    const [saved, setSaved] = useState(false);
+// used as default export because code highlighting issues, must be simple export
+export default function App(): React.ReactElement {
+    const [isSaved, setSaved] = useState(false);
+    const saveButtonRef = useRef<any>();
 
-    const save = () => {
-        if (saved) {
+    function save() {
+        if (isSaved) {
             return;
         }
-        setSaved(!saved);
 
-        setTimeout(() => {
-            setSaved(!saved);
+        setSaved(!isSaved);
+
+        setTimeout( () => {
+            const buttonNode = saveButtonRef.current;
+            if (buttonNode) {
+                const attributeValue = buttonNode.getAttribute('data-is-saved');
+                setSaved(!attributeValue);
+            }
         }, 1000);
-    };
+    }
 
     return (
         <div className={styles.app}>
-            <SaveButton onClick={save} saved={saved}></SaveButton>
+            <SaveButton
+                forwardRef={saveButtonRef}
+                onClick={save}
+                isSaved={isSaved}
+                data-is-saved={isSaved}
+            />
         </div>
     );
 }
 
-const SaveButton = ({ saved, ...buttonProps }) => {
+type ButtonProps = {
+    isSaved: boolean,
+    forwardRef: ForwardedRef<any>,
+    [key: string]: any,
+}
+
+const SaveButton = ({ isSaved, forwardRef, ...buttonProps }: ButtonProps): React.ReactElement => {
     return (
-        <button className={styles.bigButton} {...buttonProps}>
-            {saved ? 'Saved ✓' : 'Save'}
+        <button
+            ref={forwardRef}
+            className={styles.bigButton}
+            {...buttonProps}
+        >
+            {isSaved ? 'Saved ✓' : 'Save'}
         </button>
     );
 };

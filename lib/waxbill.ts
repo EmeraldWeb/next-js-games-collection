@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import * as Buffer from 'buffer';
+import waxbillTasksDescr from './waxbill-tasks-descr.json';
 
 const tasksDirectory = path.join(process.cwd(), 'components/tasks/waxbill');
 
@@ -27,6 +28,14 @@ export function getAllTasksIds(): Params[] {
             },
         };
     });
+}
+
+type Descriptions = {
+    [key: string]: string,
+}
+
+export function getTasksDescriptions(): Descriptions {
+    return waxbillTasksDescr;
 }
 
 export function getFileContent(fileName: string): string {

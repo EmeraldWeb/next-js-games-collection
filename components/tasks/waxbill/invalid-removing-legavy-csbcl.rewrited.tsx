@@ -1,30 +1,98 @@
-import React from "react";
+// must be used internationalization
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-export default class Example extends React.Component {
-    state = {
-        list: [1, 2, 3, 4, 5]
+import styles from '../../../styles/invalid-removing-legavy-csbcl.module.scss';
+
+type Props = {
+    inputsDict?: {
+        [id: string]: string,
+    },
+}
+
+// used as default export because code highlighting issues, must be simple export
+export default function TaskExample(props: Props): React.ReactElement {
+    const defaultDict = { // maybe better to replace on Map
+        '1': '',
+        '2': '',
+        '3': '',
     };
 
-    // rewrited
+    const [dict, setDict] = useState(props.inputsDict ?? defaultDict);
 
-    removeHandler(index) {
-        const { list } = this.state;
-        list.splice(index, 1);
-        this.setState({ list });
+    function changeValue(event: React.FormEvent<HTMLInputElement>, id: string): void {
+        const newDict = {...dict};
+        newDict[id] = event.currentTarget.value;
+        setDict(newDict);
     }
 
-    render() {
-        const { list } = this.state;
+    function removeInput(id: string): void {
+        const newDict = {...dict};
+        delete newDict[id]
+        setDict(newDict);
+    }
+
+    function addInput(): void {
+        const newDict = {...dict};
+        newDict[uuidv4()] = '';
+        setDict(newDict);
+    }
+
+    function processSummary(dictionary: typeof dict): string { // maybe better to move in utils
+        return Object.values(dictionary)
+            .filter((str) => str)
+            .join(', ');
+    }
+
+    const dictItems = Object.keys(dict).map((id: string) => { // maybe better to extract in another component
         return (
-            <div>
-                {list.map((v, index) => (
-                    <p key={index}>
-                        <label>Input with id = {v} </label>
-                        <input type="text" />
-                        <label onClick={() => this.removeHandler(index)}> x</label>
-                    </p>
-                ))}
+            <li
+                key={id}
+                className={styles.listItem}
+            >
+                <label className={styles.input}>
+                    <input
+                        type='text'
+                        onChange={(event) => {changeValue(event, id)}}
+                        value={dict[id]}
+                    />
+                </label>
+
+                <button
+                    className={styles.removeButton}
+                    type='button'
+                    onClick={() => removeInput(id)}
+                    title={'Delete Input'}
+                >
+                   {'X'}
+                </button>
+
+                <span className={styles.inputDesc}>
+                    {`Input with id = ${id}`}
+                </span>
+            </li>
+        )
+    });
+
+    return (
+        <div className={styles.task}>
+            <ul className={styles.list}>
+                {dictItems}
+            </ul>
+
+            <button
+                className={styles.addButton}
+                type='button'
+                onClick={addInput}
+            >
+                {'Add Input'}
+            </button>
+
+            <div className={styles.summary}>
+                <span>
+                    {`Summary: ${processSummary(dict)}`}
+                </span>
             </div>
-        );
-    }
+        </div>
+    );
 }

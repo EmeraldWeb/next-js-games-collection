@@ -1,0 +1,31 @@
+.list,
+.addButton {
+    margin-bottom: 16px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.input,
+.removeButton {
+    margin-right: 8px;
+}
+
+.removeButton,
+.addButton {
+    cursor: pointer;
+}
+
+.inputDesc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.summary {
+    font-size: 18px;
+    font-weight: 700;
+}

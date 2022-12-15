@@ -27,6 +27,7 @@
 
 .title {
     font-size: 24px;
+    font-weight: 700;
     margin-bottom: common.$gap;
 }
 
@@ -36,6 +37,10 @@
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+.description {
+    font-size: 20px;
 }
 
 @media (min-width: device-size.$device-width-tablet) {
