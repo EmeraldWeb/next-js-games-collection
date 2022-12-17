@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Toggle } from '../../components/inputs';
+import { switchTheme } from '../../services/color-theme-switcher';
 import styles from './LightSwitch.module.scss';
-import modeColors from '../../styles/variables/color-theme.json';
 
 export function LightSwitch(): React.ReactElement {
     const [isDark, setIsMoon] = useState(false);
@@ -14,13 +14,7 @@ export function LightSwitch(): React.ReactElement {
     const icon = isDark ? 'sun' : 'moon';
 
     useEffect(() => {
-        const rootCss = document.querySelector(':root') as HTMLElement;
-
-        if (rootCss) {
-            Object.keys(modeColors[mode]).forEach((key) => {
-                rootCss.style.setProperty(key, modeColors[mode][key]);
-            })
-        }
+        switchTheme(mode);
     }, [isDark]);
 
     return (
