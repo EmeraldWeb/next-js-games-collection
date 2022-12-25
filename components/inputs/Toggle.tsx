@@ -1,7 +1,8 @@
 import styles from './Toggle.module.scss';
 
-type Props = {
+export type ToggleProps = {
     callback: (isChecked: boolean) => void,
+    alt: string,
     defaultChecked?: boolean,
     className?: string,
     [key: string]: any,
@@ -12,7 +13,7 @@ export function Toggle({
     className,
     defaultChecked,
     ...otherProps
-}: Props): React.ReactElement {
+}: ToggleProps): React.ReactElement {
     function handleChange(event) {
         callback(event.target.checked);
     }

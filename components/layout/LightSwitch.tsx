@@ -23,6 +23,7 @@ export function LightSwitch(): React.ReactElement {
                 className={styles.toggle}
                 callback={handleLight}
                 defaultChecked={false}
+                alt={'LightSwitch'}
             />
             <img
                 className={styles.icon}
