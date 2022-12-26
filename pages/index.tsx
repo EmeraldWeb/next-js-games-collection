@@ -5,7 +5,7 @@ import { Logo } from '../components/logo';
 import { ListOfLinks } from '../components/list';
 import styles from '../styles/Home.module.scss';
 
-import { gitHub } from '../const/urls'
+import { gitHub } from '../const/urls';
 
 const links = [
     {

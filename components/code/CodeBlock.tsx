@@ -9,7 +9,7 @@ type Style = { [key: string]: React.CSSProperties };
 
 type Props = {
     codeString: string,
-    codeStyle?: Style,
+    codeStyle?: Style, // TODO
     // theme?: string,
 }
 
