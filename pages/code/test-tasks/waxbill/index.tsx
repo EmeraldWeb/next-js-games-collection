@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import capitalize from 'lodash/capitalize';
 
-import { Layout } from '../../../components/layout';
-import { ListOfLinks, LinkParams } from '../../../components/list/ListOfLinks';
-import { TopicHeader } from '../../../components/topic-header';
-import { getAllTasksIds, Params } from '../../../lib/waxbill';
+import { Layout } from '../../../../components/layout';
+import { ListOfLinks, LinkParams } from '../../../../components/list/ListOfLinks';
+import { TopicHeader } from '../../../../components/topic-header';
+import { getAllTasksIds, Params } from '../../../../lib/waxbill';
 
 export async function getStaticProps() {
     const paths = getAllTasksIds();
@@ -28,6 +28,8 @@ export default function WaxbillList(props: Props): React.ReactElement {
             text: capitalize(url),
         }
     });
+
+    console.log('links', links);
 
     return (
         <Layout>
