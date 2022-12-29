@@ -9,9 +9,13 @@ import { gitHub } from '../const/urls';
 
 const links = [
     {
-        href: '/test-tasks/waxbill',
-        text: 'Waxbill',
-    }
+        href: '/code/articles',
+        text: 'Code articles',
+    },
+    {
+        href: '/code/test-tasks',
+        text: 'Test tasks',
+    },
 ]
 
 export default function Home(): React.ReactElement {

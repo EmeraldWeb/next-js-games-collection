@@ -2,11 +2,11 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
 
-import { Header } from '../../../components/layout/Header';
-import { TopicHeader } from '../../../components/topic-header';
-import { CodeMirror } from '../../../components/code';
-import { getAllTasksIds, getFileContent, getTasksDescriptions } from '../../../lib/waxbill';
-import styles from '../../../styles/WaxbillTask.module.scss';
+import { Header } from '../../../../components/layout/Header';
+import { TopicHeader } from '../../../../components/topic-header';
+import { CodeMirror } from '../../../../components/code';
+import { getAllTasksIds, getFileContent, getTasksDescriptions } from '../../../../lib/waxbill';
+import styles from '../../../../styles/WaxbillTask.module.scss';
 
 export async function getStaticProps({ params }) {
     const originalCode = getFileContent(`${params.id}.tsx`);
@@ -43,7 +43,7 @@ export default function Task(props: Props): React.ReactElement {
     const { id, originalCode, rewritedCode, description } = props;
 
     const Dynamic = dynamic(
-        () => import(`../../../components/tasks/waxbill/${id}.rewrited.tsx`),
+        () => import(`../../../../components/tasks/waxbill/${id}.rewrited.tsx`),
         { suspense: true,}
     )
 
